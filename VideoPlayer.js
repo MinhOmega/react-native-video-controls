@@ -158,6 +158,7 @@ export default class VideoPlayer extends Component {
      */
     this.styles = {
       videoStyle: this.props.videoStyle || {},
+      timerStyle: this.props.timerStyle || {},
       containerStyle: this.props.style || {},
     };
   }
@@ -750,6 +751,9 @@ export default class VideoPlayer extends Component {
     if (this.styles.videoStyle !== nextProps.videoStyle) {
       this.styles.videoStyle = nextProps.videoStyle;
     }
+    if (this.styles.timerStyle !== nextProps.timerStyle) {
+      this.styles.timerStyle = nextProps.timerStyle;
+    }
 
     if (this.styles.containerStyle !== nextProps.style) {
       this.styles.containerStyle = nextProps.style;
@@ -1157,7 +1161,7 @@ export default class VideoPlayer extends Component {
    */
   renderTimer() {
     return this.renderControl(
-      <Text style={styles.controls.timerText}>{this.calculateTime()}</Text>,
+      <Text style={[styles.controls.timerText, this.styles.timerStyle]}>{this.calculateTime()}</Text>,
       this.methods.toggleTimer,
       styles.controls.timer,
     );
